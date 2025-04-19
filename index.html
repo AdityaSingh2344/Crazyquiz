@@ -1,0 +1,294 @@
+<!-- under25 username : e/returnbydeath -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Silly Personality Quiz</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background-color: #fff8f0;
+      padding: 20px;
+      max-width: 600px;
+      margin: auto;
+      color: #333;
+    }
+
+    h2 {
+      color: #ff4081;
+      text-align: center;
+      font-size: 2em;
+    }
+
+    .question {
+      margin-bottom: 20px;
+    }
+
+    select {
+      padding: 10px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      width: 100%;
+      font-size: 1em;
+      background-color: #fff;
+      transition: box-shadow 0.3s ease;
+    }
+
+    select:focus {
+      outline: none;
+      box-shadow: 0 0 5px #ff4081;
+    }
+
+    button {
+      padding: 12px 24px;
+      background: #6200ea;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 1em;
+      cursor: pointer;
+      display: block;
+      margin: 20px auto;
+      transition: background-color 0.3s, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: #3700b3;
+      transform: scale(1.05);
+    }
+
+    #result {
+      margin-top: 30px;
+      font-weight: bold;
+      font-size: 1.4em;
+      text-align: center;
+      color: #2c2c2c;
+      animation: fadeIn 0.5s ease-in;
+    }
+
+    #gif {
+      display: block;
+      margin: 15px auto;
+      max-width: 100%;
+      border-radius: 10px;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media screen and (max-width: 480px) {
+      h2 {
+        font-size: 1.5em;
+      }
+
+      select, button {
+        font-size: 1em;
+      }
+
+      #result {
+        font-size: 1.2em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Silly Personality Quiz 🧠✨</h2>
+
+  <div class="question">
+    <p>1. What's your favorite food?</p>
+    <select id="q1">
+      <option value="pizza">Pizza</option>
+      <option value="icecream">Ice Cream</option>
+      <option value="cocacola">Coca-Cola</option>
+      <option value="popcorn">Popcorn</option>
+    </select>
+  </div>
+
+  <div class="question">
+    <p>2. Pick an animal:</p>
+    <select id="q2">
+      <option value="cat">Cat</option>
+      <option value="dragon">Dragon</option>
+      <option value="sloth">Sloth</option>
+      <option value="dog">Dog</option>
+    </select>
+  </div>
+
+  <div class="question">
+    <p>3. What's your secret superpower?</p>
+    <select id="q3">
+      <option value="invisibility">Invisibility</option>
+      <option value="sneeze-fire">Sneezing fire</option>
+      <option value="sleep-anywhere">Sleeping anywhere</option>
+      <option value="teleportation">Teleportation</option>
+    </select>
+  </div>
+
+  <button onclick="showResult()">Reveal My Silly Personality!</button>
+
+  <div id="result"></div>
+  <img id="gif" src="" alt="" style="display: none;"/>
+
+  <audio id="sound" src="https://www.soundjay.com/buttons/sounds/button-16.mp3" preload="auto"></audio>
+  <!-- under25 username : e/returnbydeath -->
+  <script>
+    function showResult() {
+      const sound = document.getElementById("sound");
+      sound.play();
+
+      const food = document.getElementById('q1').value;
+      const animal = document.getElementById('q2').value;
+      const power = document.getElementById('q3').value;
+
+      const comboKey = `${food}-${animal}-${power}`;
+      const resultsMap = {
+        "pizza-cat-invisibility": {
+          text: "a Sneaky Pizza Ninja Cat! 🍕🐱🕵️‍♂️",
+          gif: "https://media.giphy.com/media/ltsyz3RkYURyvWIYCu/giphy.gif"
+        },
+        "pizza-cat-sneeze-fire": {
+          text: "a Fire-Breathing Pizza Cat! 🍕🐱🔥",
+          gif: "https://media.giphy.com/media/0qVKzs6dQXMffxTkcL/giphy.gif"
+        },
+        "pizza-cat-sleep-anywhere": {
+          text: "a Cat that naps in pizza boxes! 🐱🍕💤",
+          gif: "https://media.giphy.com/media/mDMT69YxNk3D3fvl4J/giphy.gif"
+        },
+        "pizza-cat-teleportation": {
+          text: "a cat teleporting to a pizza joint.! 🐱🍕✨",
+          gif: "https://media.giphy.com/media/cPxRDvlSj9QKA/giphy.gif"
+        },
+        "pizza-dog-invisibility": {
+          text: "an Invisible Pup that steals pizza! 🐶🍕👻",
+          gif: "https://media.giphy.com/media/18trqWNZnu33q/giphy.gif"
+        },
+        "pizza-dog-sneeze-fire": {
+          text: "a Pizza Dog with a fiery sneeze! 🐶🔥🍕",
+          gif: "https://media.giphy.com/media/MDDq8LcBiaPistbLFe/giphy.gif"
+        },
+        "pizza-dog-sleep-anywhere": {
+          text: "a Pup dreaming of pizza everywhere! 🍕🐶💤",
+          gif: "https://media.giphy.com/media/jC1zKGLmfVYXDEgUii/giphy.gif"
+        },
+        "pizza-dog-teleportation": {
+          text: "a Dog that teleports to pizza parties! 🐶🍕🚀",
+          gif: "https://media.giphy.com/media/wDbAKEkMcH80CJ47Zs/giphy.gif"
+        },
+        "pizza-dragon-invisibility": {
+          text: "a dragon that goes invisible and has come in search of pizza! 🍕🐉🫥",
+          gif: "https://media.giphy.com/media/l3UcwIhCBs3bKdQdO/giphy.gif"
+        },
+        "pizza-dragon-sneeze-fire": {
+          text: "a Dragon sneezing fire after eating pizza! 🍕🐉🔥",
+          gif: "https://media.giphy.com/media/3o7TKrEzvLbsVAud8I/giphy.gif"
+        },
+        "pizza-dragon-sleep-anywhere": {
+          text: "a Dragon snoozing on hill after eating pizza ! 🐉🍕💤",
+          gif: "https://media.giphy.com/media/XcwMM7G65vSvn5pFnF/giphy.gif"
+        },
+        "pizza-dragon-teleportation": {
+          text: "a Dragon that warps across realms in search of pizza! 🐉🍕🌌",
+          gif: "https://media.giphy.com/media/poPz9jfVYTbDW/giphy.gif"
+        },
+        "pizza-sloth-invisibility": {
+          text: "a Stealthy sloth that loves pizza! 🦥🍕👀",
+          gif: "https://media.giphy.com/media/GYtcGUAU6sa8zbZsR7/giphy.gif"
+        },
+        "pizza-sloth-sneeze-fire": {
+          text: "a Lazy Sloth who intakes flames! 🦥🍕🔥",
+          gif: "https://media.giphy.com/media/NbazGZ3Sy43QUPQ2Ky/giphy.gif"
+        },
+        "pizza-sloth-sleep-anywhere": {
+          text: "a Pizza Sloth sleeping mid-bite! 🦥💤🍕",
+          gif: "https://media.giphy.com/media/upNoNLqei1FVS/giphy.gif"
+        },
+        "pizza-sloth-teleportation": {
+          text: "a Pizza-Loving Sloth that slowly teleports! 🦥🍕✨",
+          gif: "https://media.giphy.com/media/O9BPkYr89lK2A/giphy.gif"
+        },
+
+        // Now add the other food groups
+        "icecream-cat-invisibility": {
+          text: "an cat that goes Invisible after eating a Ice Cream ! 🍦🐱👻",
+          gif: "https://media.giphy.com/media/5RPHnsX82NdHa/giphy.gif"
+        },
+        "icecream-cat-sneeze-fire": {
+          text: "a Cat who sneezes after eating ice cream ! 🐱🍦🔥",
+          gif: "https://media.giphy.com/media/jpDiYoeDQYzWYGS4FN/giphy.gif"
+        },
+        "icecream-cat-sleep-anywhere": {
+          text: "a Kitty napping in a sundae! 🍨🐱💤",
+          gif: "https://media.giphy.com/media/7IVSP1C4FQMIE/giphy.gif"
+        },
+        "icecream-cat-teleportation": {
+          text: "a Cat that zips through ice cream shops! 🐱🍦🚀",
+          gif: "https://media.giphy.com/media/9MIJtDqV5MoGrjEBIj/giphy.gif"
+        },
+        "icecream-dragon-invisibility": {
+          text: "a Dragon that goes invisible after eating icecream! 🐉🍦🫥",
+          gif: "https://media.giphy.com/media/3zHQggM3feMLX2haXV/giphy.gif"
+        },
+        "icecream-dragon-sneeze-fire": {
+          text: "a Dragon that sneeze ice after eating ice cream! 🍦🐉🔥",
+          gif: "https://media.giphy.com/media/O6RIbS59Mm4Y4EbfNA/giphy.gif"
+        },
+        "icecream-dragon-sleep-anywhere": {
+          text: "a Dragon waking up from sleep in a tower after eating ice cream! 🍦🐉💤",
+          gif: "https://media.giphy.com/media/v8fFiPPTKsPAjEClkX/giphy.gif"
+        },
+        "icecream-dragon-teleportation": {
+          text: "a Teleporting Frosty Dragon! 🍦🐉✨",
+          gif: "https://media.giphy.com/media/nnH3r8lunw8vpYRWbk/giphy.gif"
+        },
+
+        // ... continue for cocacola and popcorn combos
+
+        "cocacola-sloth-teleportation": {
+          text: "a Sloth that teleports to vending machines! 🐌🥤🚀",
+          gif: "https://media.giphy.com/media/13borq7Zo2kulO/giphy.gif"
+        },
+
+        "popcorn-dog-sleep-anywhere": {
+          text: "a Pup who naps in popcorn buckets! 🐶🍿💤",
+          gif: "https://media.giphy.com/media/eKVVzfN8G1BtqegaxW/giphy.gif"
+        }
+      };
+
+      const result = resultsMap[comboKey];
+
+      if (result) {
+        document.getElementById('result').innerText = "You are... " + result.text;
+        const gif = document.getElementById('gif');
+        gif.src = result.gif;
+        gif.style.display = "block";
+      } else {
+        // Fallback random result
+        const wildOnes = [
+          {
+            text: "a Mysterious Combo of Pure Chaos! 🌪️🤪",
+            gif: "https://media.giphy.com/media/3oKIPuM1xeVUMZqbq8/giphy.gif"
+          },
+          {
+            text: "a Cosmic being with attitude! 🌈🫘😤",
+            gif: "https://media.giphy.com/media/l4FGjQPVEzwWCDMMU/giphy.gif"
+          },
+          {
+            text: "a Banana-powered Intergalactic Noodle! 🍌🚀🍝",
+            gif: "https://media.giphy.com/media/YTbZzCkRQCEJa/giphy.gif"
+          }
+        ];
+        const rand = Math.floor(Math.random() * wildOnes.length);
+        document.getElementById('result').innerText = "You are... " + wildOnes[rand].text;
+        const gif = document.getElementById('gif');
+        gif.src = wildOnes[rand].gif;
+        gif.style.display = "block";
+      }
+    }
+  </script>
+</body>
+</html>
+
